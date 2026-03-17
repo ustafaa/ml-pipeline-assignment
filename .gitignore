@@ -29,8 +29,3 @@ data/
 
 # macOS
 .DS_Store
-
-# IDE
-.idea/
-.vscode/
-*.swp

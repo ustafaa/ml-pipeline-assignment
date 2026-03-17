@@ -10,16 +10,18 @@ from torch.utils.data import DataLoader
 # 1.  HYPERPARAMETER CONFIGURATIONS (5 runs)
 # ──────────────────────────────────────────────
 RUN_CONFIGS = [
-    {"learning_rate": 0.0002, "batch_size": 64,  "epochs": 50, "latent_dim": 64,  "hidden_dim": 256, "tag": "baseline"},
-    {"learning_rate": 0.001,  "batch_size": 64,  "epochs": 50, "latent_dim": 64,  "hidden_dim": 256, "tag": "high_lr"},
-    {"learning_rate": 0.0001, "batch_size": 64,  "epochs": 50, "latent_dim": 64,  "hidden_dim": 256, "tag": "low_lr"},
-    {"learning_rate": 0.0002, "batch_size": 128, "epochs": 50, "latent_dim": 64,  "hidden_dim": 256, "tag": "large_batch"},
-    {"learning_rate": 0.0002, "batch_size": 64,  "epochs": 50, "latent_dim": 128, "hidden_dim": 512, "tag": "bigger_model"},
+    {"learning_rate": 0.0002, "batch_size": 64, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "baseline"},
+    {"learning_rate": 0.001, "batch_size": 64, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "high_lr"},
+    {"learning_rate": 0.0001, "batch_size": 64, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "low_lr"},
+    {"learning_rate": 0.0002, "batch_size": 128, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "large_batch"},
+    {"learning_rate": 0.0002, "batch_size": 64, "epochs": 50, "latent_dim": 128, "hidden_dim": 512, "tag": "bigger_model"},
 ]
 
 # ──────────────────────────────────────────────
 # 2.  MODEL DEFINITIONS
 # ──────────────────────────────────────────────
+
+
 class Generator(nn.Module):
     def __init__(self, latent_dim: int = 64, hidden_dim: int = 256):
         super().__init__()
@@ -74,12 +76,12 @@ train_dataset = datasets.MNIST(root="./data", train=True, download=True, transfo
 def train_gan(config: dict, run_number: int):
     """Train one GAN configuration and log everything to MLflow."""
 
-    lr         = config["learning_rate"]
+    lr = config["learning_rate"]
     batch_size = config["batch_size"]
-    epochs     = config["epochs"]
+    epochs = config["epochs"]
     latent_dim = config["latent_dim"]
     hidden_dim = config["hidden_dim"]
-    run_tag    = config["tag"]
+    run_tag = config["tag"]
 
     dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
 
@@ -180,7 +182,6 @@ def train_gan(config: dict, run_number: int):
         mlflow.pytorch.log_model(D, artifact_path="discriminator_model")
 
         print(f"  ✓ Run {run_number} complete — models logged to MLflow.\n")
-
 
 
 if __name__ == "__main__":

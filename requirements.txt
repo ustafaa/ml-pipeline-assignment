@@ -1,6 +1,6 @@
-pandas==2.1.1
-numpy==1.26.0
-torch==2.1.0
-torchvision==0.16.0
+pandas
+numpy
+torch
+torchvision
 mlflow
 flake8

@@ -13,8 +13,10 @@ RUN_CONFIGS = [
     {"learning_rate": 0.0002, "batch_size": 64, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "baseline"},
     {"learning_rate": 0.001, "batch_size": 64, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "high_lr"},
     {"learning_rate": 0.0001, "batch_size": 64, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "low_lr"},
-    {"learning_rate": 0.0002, "batch_size": 128, "epochs": 50, "latent_dim": 64, "hidden_dim": 256, "tag": "large_batch"},
-    {"learning_rate": 0.0002, "batch_size": 64, "epochs": 50, "latent_dim": 128, "hidden_dim": 512, "tag": "bigger_model"},
+    {"learning_rate": 0.0002, "batch_size": 128, "epochs": 50,
+     "latent_dim": 64, "hidden_dim": 256, "tag": "large_batch"},
+    {"learning_rate": 0.0002, "batch_size": 64, "epochs": 50,
+     "latent_dim": 128, "hidden_dim": 512, "tag": "bigger_model"},
 ]
 
 # ──────────────────────────────────────────────

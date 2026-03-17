@@ -57,3 +57,4 @@ for epoch in range(5):
     opt_G.step()
 
 print(f"Training complete. Generator Final Loss: {loss_G.item()}")
+

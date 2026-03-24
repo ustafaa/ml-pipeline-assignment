@@ -8,9 +8,9 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 
-EPOCHS = int(os.environ.get("EPOCHS", 5))
+EPOCHS = int(os.environ.get("EPOCHS", 1))
 BATCH_SIZE = int(os.environ.get("BATCH_SIZE", 64))
-LEARNING_RATE = float(os.environ.get("LEARNING_RATE", 0.001))
+LEARNING_RATE = float(os.environ.get("LEARNING_RATE", 10))
 MLFLOW_TRACKING_URI = os.environ.get("MLFLOW_TRACKING_URI", "sqlite:///mlflow.db")
 
 

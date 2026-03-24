@@ -29,3 +29,7 @@ data/
 
 # macOS
 .DS_Store
+
+# Big Data
+Big_Data/
+Big_Data.zip

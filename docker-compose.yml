@@ -1,6 +1,28 @@
 services:
-  student_a_gan:
+  train:
     build:
-      context: ./student_A
+      context: .
       dockerfile: Dockerfile
-    container_name: student_a_gan
+    image: mnist-pipeline:latest
+    volumes:
+      - ./data:/app/data
+      - ./mlflow.db:/app/mlflow.db
+      - ./model_info.txt:/app/model_info.txt
+    command: python train.py
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///mlflow.db
+
+  validate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mnist-pipeline:latest
+    volumes:
+      - ./mlflow.db:/app/mlflow.db
+      - ./model_info.txt:/app/model_info.txt
+    command: python check_threshold.py
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///mlflow.db
+    depends_on:
+      train:
+        condition: service_completed_successfully

@@ -1,0 +1,6 @@
+services:
+  student_a_gan:
+    build:
+      context: ./student_A
+      dockerfile: Dockerfile
+    container_name: student_a_gan

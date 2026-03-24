@@ -4,3 +4,4 @@ torch
 torchvision
 mlflow
 flake8
+dvc

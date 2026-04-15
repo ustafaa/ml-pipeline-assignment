@@ -42,7 +42,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Training
-        run: python train.py
+        run: |
+          echo "Simulating training failure for artifact demo..." >&2
+          exit 1
 
       - name: Capture Error Logs on Failure
         if: failure()
@@ -62,4 +64,4 @@ jobs:
       - name: Cleanup
         if: always()
         run: echo "Cleaning up temporary cloud volumes..."
-# pipeline updated
+
